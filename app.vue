@@ -22,6 +22,7 @@
             <div class="content">
               Desenvolvedor na Simbiose Ventures
               <br/>
+              Count: {{ counter.count }}
             </div>
           </div>
         </div>
@@ -29,6 +30,12 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+const { data: counter } = useFetch('/api/incrementCounter')
+
+
+</script>
 
 <style lang="sass">
 @import "node_modules/bulma/bulma.sass"
