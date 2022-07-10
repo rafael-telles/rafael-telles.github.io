@@ -20,7 +20,7 @@
             </div>
 
             <div class="content">
-              Desenvolvedor na <a href="https://tenda.digital" target="_blank">Tenda Digital</a>
+              Desenvolvedor na Simbiose Ventures
               <br/>
             </div>
           </div>
