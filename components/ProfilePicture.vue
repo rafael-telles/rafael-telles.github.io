@@ -976,8 +976,9 @@
 </template>
 <style scoped>
 .profile-picture {
-  --font-size: min(calc(100vw / 60), 0.85em);
-  font: var(--font-size) monospace;
+  --font-size: min(1.5vw, 8px);
+  font: var(--font-size) var(--font-stack);
   line-height: var(--font-size);
+  white-space: nowrap;
 }
 </style>
