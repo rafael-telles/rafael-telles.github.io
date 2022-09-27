@@ -1,35 +1,33 @@
 <template>
-  <Head>
-    <Title>Rafael Telles</Title>
-  </Head>
-
   <NuxtLayout>
-
-    <section class="hero is-fullheight has-text-centered">
-      <div class="hero-body">
-        <div class="container" style="max-width: 360px">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image">
-<!--                <img src="~/assets/profile.jpg"/>-->
-                <ProfilePicture />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">Rafael Telles</p>
-                  <p class="subtitle is-6"><a href="mailto:rafael@telles.dev">rafael@telles.dev</a></p>
-                </div>
-              </div>
-
-              <div class="content">
-                Desenvolvedor na Simbiose Ventures
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Head>
+      <Title>Rafael Telles</Title>
+    </Head>
+    <div ref="typerEl"></div>
   </NuxtLayout>
 </template>
+
+<script lang="ts" setup>
+import typer from "typer-js";
+const typerEl = ref<HTMLElement>(null);
+
+const newVar = () => {
+  console.log(typerEl);
+  const t = typer(typerEl.value, 20)
+    .line() // Creates a blank line.
+    .line("Typer.js is visual awesomeness!")
+    .line("Rafael Telles", {
+      element: "h1",
+    })
+    .pause(500)
+    .run(() => {
+      typerEl.value.innerHTML = "";
+    });
+
+  window.t = t;
+};
+onMounted(newVar);
+onMounted(() => {
+  window.n = newVar;
+});
+</script>
