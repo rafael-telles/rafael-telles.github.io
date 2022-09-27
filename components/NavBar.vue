@@ -1,0 +1,21 @@
+<template>
+  <div class="terminal-nav">
+    <header class="terminal-logo">
+      <div class="logo terminal-prompt"><a href="https://terminalcss.xyz" class="no-style">rafael@telles.dev</a>:~$</div>
+    </header>
+    <nav class="terminal-menu">
+      <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+        <li><a href="https://terminalcss.xyz" class="menu-item"><span>Light</span></a><meta property="position"></li>
+        <li property="itemListElement" typeof="ListItem"><a href="https://terminalcss.xyz/dark/" property="item" typeof="WebPage" class="menu-item active"><span property="name">Dark</span></a><meta property="position" content="1"></li>
+        <li property="itemListElement" typeof="ListItem"><a href="https://terminalcss.xyz/sans-serif/" property="item" typeof="WebPage" class="menu-item"><span property="name">Sans</span></a><meta property="position" content="2"></li>
+        <li property="itemListElement" typeof="ListItem"><a href="https://terminalcss.xyz/sans-serif-dark/" property="item" typeof="WebPage" class="menu-item"><span property="name">Sans Dark</span></a><meta property="position" content="3"></li>
+      </ul>
+    </nav>
+  </div>
+</template>
+
+<style scoped>
+.terminal-prompt::before {
+  display: none
+}
+</style>
