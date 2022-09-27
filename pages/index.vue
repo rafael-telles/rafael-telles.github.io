@@ -51,6 +51,8 @@ onMounted(() => {
       })
       .line();
 
+    typer.line("📫 <strong>rafael</strong> at <strong>telles.dev</strong>");
+
     printPrompt(typer);
   };
 
