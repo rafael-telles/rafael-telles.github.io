@@ -976,7 +976,7 @@
 </template>
 <style scoped>
 .profile-picture {
-  --font-size: min(calc(100vw / 60), 1em);
+  --font-size: min(calc(100vw / 60), 0.85em);
   font: var(--font-size) monospace;
   line-height: var(--font-size);
 }
