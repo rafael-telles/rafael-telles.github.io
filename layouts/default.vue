@@ -33,8 +33,17 @@
 
 html,
 body {
-  background: #2f2f2f;
-  background: red;
-  background: url(http://bit.ly/2gPLxZ4);
+  height: 100%;
+  background: url("~/assets/background.jpg");
+  background-size: cover;
+}
+
+.wb-header {
+  background: black;
+}
+.wb-body {
+  background: #222222;
+  opacity: 0.9;
+  backdrop-filter: blur(5px);
 }
 </style>

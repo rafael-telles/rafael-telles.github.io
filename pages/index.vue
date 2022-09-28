@@ -14,6 +14,18 @@
 <script lang="ts" setup>
 import VueWinBox from "vue-winbox";
 
+const viewport = process.client
+  ? window.visualViewport
+  : { width: 0, height: 0 };
+let width = Math.min(1200, Math.max(600, viewport.width * 0.75));
+let height = Math.max(300, viewport.height * 0.75);
+const max = width <= 600;
+
+if (max) {
+  width = null;
+  height = null;
+}
+
 const winboxOptions = {
   class: ["no-full", "my-theme"],
   background: "transparent",
@@ -21,26 +33,18 @@ const winboxOptions = {
   x: "center",
   y: "center",
   icon: "/terminal-icon.svg",
-  max: true,
-  // width: process.client && window.visualViewport.width - 40,
-  // height: process.client && window.visualViewport.height - 40,
+  max,
+  width,
+  height,
 };
 </script>
 
 <style scoped>
 .window-content {
-  background: rgb(37, 37, 38);
   overflow: auto;
   height: 100%;
   width: 100%;
   padding: 2px;
 }
 </style>
-<style>
-.wb-header {
-  background: black;
-}
-.wb-body {
-  opacity: 0.9;
-}
-</style>
+<style></style>
