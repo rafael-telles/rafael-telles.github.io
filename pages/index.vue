@@ -2,6 +2,10 @@
   <NuxtLayout>
     <Head>
       <Title>Rafael Telles</Title>
+      <Meta
+        name="description"
+        content="Hey there! I'm Rafael Telles, Fullstack Engineer"
+      />
     </Head>
     <client-only>
       <VueWinBox ref="winboxRef" :options="winboxOptions">
