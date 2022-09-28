@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <NavBar />
+    <!--    <NavBar />-->
     <slot />
   </div>
 </template>
@@ -29,5 +29,12 @@
   --code-bg-color: #3f3f44;
   --input-style: solid;
   --display-h1-decoration: none;
+}
+
+html,
+body {
+  background: #2f2f2f;
+  background: red;
+  background: url(http://bit.ly/2gPLxZ4);
 }
 </style>
