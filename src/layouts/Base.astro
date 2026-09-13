@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import { content, type Locale } from "../content/profile";
 
 interface Props {
@@ -37,12 +38,8 @@ const canonical = new URL(locale === "pt" ? "/" : "/en/", site);
     <meta property="og:image" content={new URL("/profile.jpg", site)} />
     <meta name="twitter:card" content="summary" />
     <meta name="color-scheme" content="dark light" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-jetbrains-mono" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
@@ -70,8 +67,8 @@ const canonical = new URL(locale === "pt" ? "/" : "/en/", site);
     --accent: #d16a5f;
     --accent-soft: rgba(209, 106, 95, 0.14);
     --border: #26292d;
-    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: var(--font-inter);
+    --mono: var(--font-jetbrains-mono);
     --measure: 40rem;
   }
 
