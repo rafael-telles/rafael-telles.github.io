@@ -1,0 +1,207 @@
+---
+import { content, links, type Locale } from "../content/profile";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = content[locale];
+---
+
+<main class="card">
+  <header class="top">
+    <a class="mono prompt" href={locale === "pt" ? "/" : "/en/"} aria-label="telles.dev">
+      <span class="dollar">$</span> telles.dev
+    </a>
+    <a class="mono switch" href={t.switchHref} lang={locale === "pt" ? "en" : "pt-BR"}
+      >{t.switchLabel}</a
+    >
+  </header>
+
+  <section class="hero">
+    <img
+      class="avatar"
+      src="/profile.jpg"
+      alt="Rafael Telles"
+      width="96"
+      height="96"
+      loading="eager"
+      decoding="async"
+    />
+    <div>
+      <h1>Rafael Telles</h1>
+      <p class="role">
+        {t.role} <a class="company" href={links.layers} rel="me noopener" target="_blank">{t.company}</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="bio">
+    <p>{t.intro}</p>
+    <p class="muted">{t.before}</p>
+  </section>
+
+  <section class="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title" class="mono label">{t.contactTitle}</h2>
+    <ul>
+      <li>
+        <a href={`mailto:${links.email}`}>
+          <span class="mono key">{t.emailLabel}</span>
+          <span class="val">{links.email}</span>
+        </a>
+      </li>
+      <li>
+        <a href={links.linkedin} rel="me noopener" target="_blank">
+          <span class="mono key">LinkedIn</span>
+          <span class="val">in/rafael-telles</span>
+        </a>
+      </li>
+      <li>
+        <a href={links.github} rel="me noopener" target="_blank">
+          <span class="mono key">GitHub</span>
+          <span class="val">@rafael-telles</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="mono foot">{t.footer}</footer>
+</main>
+
+<style>
+  .card {
+    width: 100%;
+    max-width: var(--measure);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: var(--fg-muted);
+  }
+
+  .dollar {
+    color: var(--accent);
+  }
+
+  .switch {
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .switch:hover {
+    border-color: var(--accent);
+    color: var(--fg);
+  }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--border);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.7rem, 4vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .role {
+    margin: 0.25rem 0 0;
+    font-size: 1.1rem;
+    color: var(--fg-muted);
+  }
+
+  .company {
+    color: var(--fg);
+    font-weight: 500;
+    border-bottom: 1px solid var(--accent);
+  }
+  .company:hover {
+    color: var(--accent);
+  }
+
+  .bio p {
+    margin: 0 0 1rem;
+  }
+  .bio p:last-child {
+    margin-bottom: 0;
+  }
+  .muted {
+    color: var(--fg-muted);
+  }
+
+  .label {
+    margin: 0 0 0.9rem;
+    color: var(--fg-faint);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+  }
+
+  .contact ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact li a {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s;
+  }
+  .contact li a:hover .val {
+    color: var(--accent);
+  }
+
+  .key {
+    width: 5.5rem;
+    flex-shrink: 0;
+    color: var(--fg-muted);
+  }
+
+  .val {
+    font-weight: 500;
+  }
+
+  .foot {
+    color: var(--fg-faint);
+    padding-top: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      align-items: flex-start;
+    }
+    .avatar {
+      width: 72px;
+      height: 72px;
+    }
+    .key {
+      width: 4.5rem;
+    }
+  }
+</style>

@@ -1,42 +1,11 @@
-# Nuxt 3 Minimal Starter
+# telles.dev
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
-
-## Setup
-
-Make sure to install the dependencies:
+Site pessoal de Rafael Telles. Uma página, bilíngue (`/` em português, `/en/` em inglês), estática, feita com [Astro](https://astro.build).
 
 ```bash
-# yarn
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
+yarn dev      # http://localhost:4321
+yarn build    # gera ./dist
 ```
 
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+Todo o texto fica em `src/content/profile.ts`. Layout em `src/components/Card.astro`.
