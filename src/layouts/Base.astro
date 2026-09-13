@@ -3,9 +3,10 @@ import { content, type Locale } from "../content/profile";
 
 interface Props {
   locale: Locale;
+  noindex?: boolean;
 }
 
-const { locale } = Astro.props;
+const { locale, noindex = false } = Astro.props;
 const t = content[locale];
 const site = Astro.site ?? new URL("https://telles.dev");
 const canonical = new URL(locale === "pt" ? "/" : "/en/", site);
@@ -18,10 +19,16 @@ const canonical = new URL(locale === "pt" ? "/" : "/en/", site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{t.title}</title>
     <meta name="description" content={t.description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="pt-BR" href={new URL("/", site)} />
-    <link rel="alternate" hreflang="en" href={new URL("/en/", site)} />
-    <link rel="alternate" hreflang="x-default" href={new URL("/", site)} />
+    {noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <>
+        <link rel="canonical" href={canonical} />
+        <link rel="alternate" hreflang="pt-BR" href={new URL("/", site)} />
+        <link rel="alternate" hreflang="en" href={new URL("/en/", site)} />
+        <link rel="alternate" hreflang="x-default" href={new URL("/", site)} />
+      </>
+    )}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="profile" />
     <meta property="og:title" content={t.title} />
@@ -43,7 +50,7 @@ const canonical = new URL(locale === "pt" ? "/" : "/en/", site);
       jobTitle: "CTO",
       worksFor: { "@type": "Organization", name: "Layers", url: "https://layers.education" },
       alumniOf: { "@type": "CollegeOrUniversity", name: "UFABC" },
-      url: "https://telles.dev",
+      url: canonical.href,
       image: new URL("/profile.jpg", site).href,
       sameAs: ["https://www.linkedin.com/in/rafael-telles", "https://github.com/rafael-telles"],
     })} />
